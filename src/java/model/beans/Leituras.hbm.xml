@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/09/2020 16:10:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.beans.Leituras" table="leituras" catalog="coletor" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clientes" class="model.beans.Clientes" fetch="select">
+            <column name="cliente_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="medidores" class="model.beans.Medidores" fetch="select">
+            <column name="medidor_id" not-null="true" />
+        </many-to-one>
+        <property name="mesAno" type="date">
+            <column name="mesAno" length="10" not-null="true" />
+        </property>
+        <property name="anterior" type="long">
+            <column name="anterior" not-null="true" />
+        </property>
+        <property name="atual" type="java.lang.Long">
+            <column name="atual" />
+        </property>
+        <property name="constante" type="double">
+            <column name="constante" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="residuo" type="java.lang.Double">
+            <column name="residuo" precision="22" scale="0" />
+        </property>
+        <property name="medido" type="java.lang.Long">
+            <column name="medido" />
+        </property>
+        <property name="faturado" type="java.lang.Long">
+            <column name="faturado" />
+        </property>
+        <property name="tarifaSemTributos" type="double">
+            <column name="tarifaSemTributos" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="tarifaComTributos" type="double">
+            <column name="tarifaComTributos" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="media12meses" type="long">
+            <column name="media12Meses" not-null="true" />
+        </property>
+        <property name="dataVencimento" type="date">
+            <column name="dataVencimento" length="10" />
+        </property>
+        <property name="dataAnterior" type="date">
+            <column name="dataAnterior" length="10" not-null="true" />
+        </property>
+        <property name="dataAtual" type="date">
+            <column name="dataAtual" length="10" />
+        </property>
+        <property name="dataEmissao" type="date">
+            <column name="dataEmissao" length="10" />
+        </property>
+        <property name="dataApresentacao" type="date">
+            <column name="dataApresentacao" length="10" />
+        </property>
+        <property name="dataProxima" type="date">
+            <column name="dataProxima" length="10" />
+        </property>
+        <property name="diasConsumo" type="java.lang.Integer">
+            <column name="diasConsumo" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="total" precision="22" scale="0" />
+        </property>
+        <property name="consumo" type="java.lang.Long">
+            <column name="consumo" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

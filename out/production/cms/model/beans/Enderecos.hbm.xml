@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/09/2020 16:44:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.beans.Enderecos" table="enderecos" catalog="coletor" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cidades" class="model.beans.Cidades" fetch="select">
+            <column name="cidade_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="medidores" class="model.beans.Medidores" fetch="select">
+            <column name="medidor_id" not-null="true" />
+        </many-to-one>
+        <property name="cep" type="string">
+            <column name="cep" length="8" not-null="true" />
+        </property>
+        <property name="logradouro" type="string">
+            <column name="logradouro" length="80" not-null="true" />
+        </property>
+        <property name="numero" type="string">
+            <column name="numero" length="10" not-null="true" />
+        </property>
+        <property name="complemento" type="string">
+            <column name="complemento" length="80" not-null="true" />
+        </property>
+        <property name="bairro" type="string">
+            <column name="bairro" length="30" not-null="true" />
+        </property>
+        <property name="uf" type="string">
+            <column name="uf" length="2" not-null="true" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

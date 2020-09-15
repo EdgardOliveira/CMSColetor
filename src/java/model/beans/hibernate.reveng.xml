@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="coletor"/>
+  <table-filter match-name="leituras"/>
+  <table-filter match-name="medidores"/>
+  <table-filter match-name="users"/>
+  <table-filter match-name="cidades"/>
+  <table-filter match-name="clientes"/>
+  <table-filter match-name="enderecos"/>
+</hibernate-reverse-engineering>
