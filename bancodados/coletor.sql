@@ -121,10 +121,10 @@ CREATE TABLE IF NOT EXISTS `enderecos` (
 --
 
 INSERT INTO `enderecos` (`id`, `cep`, `logradouro`, `numero`, `complemento`, `bairro`, `uf`, `medidor_id`, `cidade_id`, `created_at`, `updated_at`) VALUES
-(1, '69050001', 'Avenida Constantino Nery', '2525', 'Condomínio Parque dos Ingleses, Bloco 10B, Apartamento 102B', 'Chapada', 'AM', 1, 1, '2020-08-29 04:03:16', '2020-08-29 04:03:16'),
-(2, '69049138', 'Rua 18', '1', 'Conjunto Vila Nova', 'Cidade Nova', 'AM', 2, 1, '2020-08-29 04:03:16', '2020-08-29 04:03:16'),
-(3, '69010125', 'Rua 19', '1', 'Conjunto Vila Nova', 'Cidade Nova', 'AM', 3, 1, '2020-08-29 04:03:16', '2020-08-29 04:03:16'),
-(4, '69050001', 'Avenida Constantino Nery', '2525', 'Condomínio Parque dos Ingleses, Bloco 10B, Apartamento 103B', 'Chapada', 'AM', 4, 1, '2020-08-29 04:03:16', '2020-08-29 04:03:16');
+(1, '69050001', 'Avenida Constantino Nery', '2000', 'Condomínio Brisas, Bloco 1B, Apartamento 10', 'Parque 10', 'AM', 1, 1, '2020-08-29 04:03:16', '2020-08-29 04:03:16'),
+(2, '69049138', 'Rua 22', '1', 'Conjunto Vila Nova', 'Cidade Nova', 'AM', 2, 1, '2020-08-29 04:03:16', '2020-08-29 04:03:16'),
+(3, '69010125', 'Rua 19', '1', 'Conjunto Vila Rica', 'Cidade Nova', 'AM', 3, 1, '2020-08-29 04:03:16', '2020-08-29 04:03:16'),
+(4, '69050001', 'Avenida Constantino Nery', '2001', 'Condomínio Smille, Bloco 20B, Apartamento 2103B', 'Chapada', 'AM', 4, 1, '2020-08-29 04:03:16', '2020-08-29 04:03:16');
 
 -- --------------------------------------------------------
 
