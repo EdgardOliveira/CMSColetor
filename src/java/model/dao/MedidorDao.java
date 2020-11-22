@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.dao;
 
 import java.util.ArrayList;
@@ -59,6 +54,13 @@ public class MedidorDao {
         session.delete(medidor);                        //apagando
         transaction.commit();                           //confirmação
         session.close();                                //fechar o banco de dados        
-    }     
-
+    }
+    
+    public Medidores consultarPorMedidor(long numero){
+        session = FabricaConexao.getSessionFactory();   //conexão
+        Query query = session.createSQLQuery("select * from medidores where numero = "+String.valueOf(numero)+"").addEntity(Medidores.class);
+        lista = query.list();
+        session.close();                                //fechar o banco de dados 
+        return lista.get(0);
+    }
 }

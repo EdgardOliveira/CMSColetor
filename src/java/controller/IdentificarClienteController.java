@@ -2,20 +2,25 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.beans.Users;
-import model.dao.UserDao;
+import model.beans.Leituras;
+import model.beans.Medidores;
+import model.dao.ClienteDao;
+import model.dao.LeituraDao;
+import model.dao.MedidorDao;
 
 /**
  *
- * @author neove
+ * @author Edgard Oliveira
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "IdentificarClienteController", urlPatterns = {"/IdentificarClienteController"})
+public class IdentificarClienteController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -70,23 +75,28 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String encaminhar = "login.jsp";
+        String encaminhar = "identificarCliente.jsp";
         
-        String email = request.getParameter("txtEmail");
-        String senha = request.getParameter("txtSenha");
+        String cpfCnpj = request.getParameter("txtCpfCnpj");
+        long numero = Long.parseLong(request.getParameter("txtMedidor"));
 
-        UserDao userDao = new UserDao();
-        long id = userDao.efetuarLogin(email, senha);
+        ClienteDao clienteDao = new ClienteDao();
+        boolean validacao = clienteDao.validarCredenciais(cpfCnpj, numero);
         
-        if (id !=-1){
-            //conseguiu se autenticar vai pra página inicial...
-            Users usuario = userDao.consultarId(id);
-    
+        if (validacao){
+            
+            MedidorDao medidorDao = new MedidorDao();
+            Medidores medidor = medidorDao.consultarPorMedidor(numero);            
+            
+            LeituraDao leituraDao = new LeituraDao();            
+            List<Leituras> listaFaturas = leituraDao.consultarPorMedidorId(medidor.getId());
+            
+            //conseguiu se autenticar vai pra página de faturas...
+            
             //envia o objeto venda como atributo na requisição
-            request.setAttribute("usuario", usuario);
+            request.setAttribute("faturas", listaFaturas);
             
-            encaminhar = "index.jsp";
-            
+            encaminhar = "faturas.jsp";
         }else{
             //não conseguiu se autenticar... volta pra página de login
         }        

@@ -135,22 +135,23 @@
             <div class="main-panel">
                 <br><br>
                 <div class="container">
+                    <div id="printableArea">
                     <div class="page-inner">
                         <div class="row justify-content-center">
                             <div class="col-12 col-lg-10 col-xl-9">
                                 <%
+                                    DateFormat formatarMesAno = new SimpleDateFormat("MMMM/yyyy");
+                                    DateFormat formatarDiaMesAnoExtenso = new SimpleDateFormat("dd MMMM yyyy");
+                                    DateFormat formatarDiaMesAno = new SimpleDateFormat("dd/MM/yyyy");
                                     LeituraDao leituraDao = new LeituraDao();
-                                    Leituras leitura = leituraDao.consultarId(1);
+                                    long id = Long.parseLong(request.getParameter("id"));
+                                    Leituras leitura = leituraDao.consultarId(id);
                                     ClienteDao clienteDao = new ClienteDao();
                                     Clientes cliente = clienteDao.consultarId(leitura.getClientes().getId());
                                     MedidorDao medidorDao = new MedidorDao();
                                     Medidores medidor = medidorDao.consultarId(leitura.getMedidores().getId());
                                     EnderecoDao enderecoDao = new EnderecoDao();
                                     Enderecos endereco = enderecoDao.consultarPorMedidorId(medidor.getId());
-
-                                    DateFormat formatarMesAno = new SimpleDateFormat("MMMM/yyyy");
-                                    DateFormat formatarDiaMesAnoExtenso = new SimpleDateFormat("dd MMMM yyyy");
-                                    DateFormat formatarDiaMesAno = new SimpleDateFormat("dd/MM/yyyy");
                                 %>
                                 <div class="row align-items-center">
                                     <div class="col">
@@ -158,12 +159,7 @@
                                         <h4 class="page-title">Fatura de <%=formatarMesAno.format(leitura.getMesAno())%></h4>
                                     </div>
                                     <div class="col-auto">
-                                        <a href="#" class="btn btn-light btn-border">
-                                            Download
-                                        </a>
-                                        <a href="#" class="btn btn-primary ml-2">
-                                            Pagar
-                                        </a>
+                                        <input type="button" class="btn btn-light btn-border" onclick="printDiv('printableArea')" value="Imprimir" />
                                     </div>
                                 </div>
                                 <div class="page-divider"></div>
@@ -370,6 +366,7 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                 </div>
                 <footer class="footer">
                     <div class="container-fluid">
@@ -425,6 +422,18 @@
         <script src="assets/js/atlantis.min.js"></script>
 
         <script >
+            
+            function printDiv(divName) {
+                var printContents = document.getElementById(divName).innerHTML;
+                var originalContents = document.body.innerHTML;
+
+                document.body.innerHTML = printContents;
+
+                window.print();
+
+                document.body.innerHTML = originalContents;
+            }            
+            
             $(document).ready(function () {
                 $('#basic-datatables').DataTable({
                 });

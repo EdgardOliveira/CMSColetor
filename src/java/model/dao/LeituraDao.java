@@ -59,6 +59,14 @@ public class LeituraDao {
         session.delete(leitura);                        //apagando
         transaction.commit();                           //confirmação
         session.close();                                //fechar o banco de dados        
-    }     
+    }
+    
+    public List<Leituras> consultarPorMedidorId(long medidor){
+        session = FabricaConexao.getSessionFactory();   //conexão
+        Query query = session.createSQLQuery("select * from leituras where medidor_id = '"+medidor+"'").addEntity(Leituras.class);
+        lista = query.list();
+        session.close();                                //fechar o banco de dados 
+        return lista;
+    }
 
 }

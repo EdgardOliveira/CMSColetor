@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.dao;
 
 import java.util.ArrayList;
@@ -59,5 +54,21 @@ public class ClienteDao {
         session.delete(cliente);                        //apagando
         transaction.commit();                           //confirmação
         session.close();                                //fechar o banco de dados        
-    }     
+    }
+    
+    public boolean validarCredenciais(String cpf_cnpj, long medidor) {
+        boolean status = false;                                    //false = não existe/não autenticado        
+        session = FabricaConexao.getSessionFactory();    //conexão
+        Query query = session.createSQLQuery(
+        "select C.nome_empresa as Cliente, C.cpf_cnpj as 'CPF/CNPJ', M.numero as Medidor from leituras as L "+
+        "inner join clientes as C on L.cliente_id = C.id " +
+        "inner join medidores as M on L.medidor_id = M.id " +
+        "where C.cpf_cnpj = '" + cpf_cnpj + "' and M.numero = '" + medidor + "'");
+        lista = query.list();
+        session.close();                                //fechar o banco de dados 
+        if ((lista.size() > 0))
+            status = true;
+        
+        return status;
+    }
 }
