@@ -4,6 +4,8 @@
     Author     : Thiago Lins
 --%>
 
+<%@page import="model.beans.Grupos"%>
+<%@page import="model.dao.GrupoDao"%>
 <%@page import="model.beans.Users"%>
 <%@page import="model.dao.UserDao"%>
 <%@page import="java.util.ArrayList"%>
@@ -184,6 +186,19 @@
                                                                     <small id="cpfHelp" class="form-text text-muted">*campo senha é obrigatório</small>
                                                                 </div>
                                                             </div>
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <label for="selectGrupo">Grupo</label>
+                                                                    <select class="form-control form-control" id="selectGrupo" name="selectGrupo" required>
+                                                                        <%
+                                                                            GrupoDao grupoDao = new GrupoDao();
+                                                                            for (Grupos grupo : grupoDao.listar()) {
+                                                                        %>
+                                                                        <option value="<%=grupo.getId()%>"><%=grupo.getDescricao()%></option>
+                                                                        <%}%>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                             <div class="modal-footer no-bd">
                                                                 <button type="submit" id="addRowButton" class="btn btn-primary">Enviar</button>
                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
@@ -226,7 +241,7 @@
                                                         <td><%=user.getName()%></td>
                                                         <td><%=user.getEmail()%></td>
                                                         <td>
-                                                        
+
                                                             <div class="form-button-action">
                                                                 <a href="alterarUser.jsp?id=<%=user.getId()%>" 
                                                                    data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Editar">

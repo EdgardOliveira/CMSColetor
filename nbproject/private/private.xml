@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Edgard/Documents/Github/CMSColetor/web/index.jsp</file>
-            <file>file:/C:/Users/Edgard/Documents/Github/CMSColetor/web/visualizarFatura.jsp</file>
+            <file>file:/C:/Users/Edgard/Documents/Github/CMSColetor/src/java/controller/LeituraController.java</file>
+            <file>file:/C:/Users/Edgard/Documents/Github/CMSColetor/src/java/model/beans/Leituras.java</file>
+            <file>file:/C:/Users/Edgard/Documents/Github/CMSColetor/web/users.jsp</file>
+            <file>file:/C:/Users/Edgard/Documents/Github/CMSColetor/web/leituras.jsp</file>
+            <file>file:/C:/Users/Edgard/Documents/Github/CMSColetor/src/java/controller/ClienteController.java</file>
+            <file>file:/C:/Users/Edgard/Documents/Github/CMSColetor/web/clientes.jsp</file>
+            <file>file:/C:/Users/Edgard/Documents/Github/CMSColetor/src/java/model/dao/ClienteDao.java</file>
         </group>
     </open-files>
 </project-private>

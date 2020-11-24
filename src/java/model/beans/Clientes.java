@@ -1,5 +1,5 @@
 package model.beans;
-// Generated 10/09/2020 16:10:26 by Hibernate Tools 4.3.1
+// Generated 23/11/2020 16:41:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -13,6 +13,7 @@ public class Clientes  implements java.io.Serializable {
 
 
      private Long id;
+     private Medidores medidores;
      private String nomeEmpresa;
      private String cpfCnpj;
      private int diaVencimento;
@@ -21,15 +22,17 @@ public class Clientes  implements java.io.Serializable {
      private Set leiturases = new HashSet(0);
 
     public Clientes() {
+        
     }
-
-	
-    public Clientes(String nomeEmpresa, String cpfCnpj, int diaVencimento) {
+    
+    public Clientes(Medidores medidores, String nomeEmpresa, String cpfCnpj, int diaVencimento) {
+        this.medidores = medidores;
         this.nomeEmpresa = nomeEmpresa;
         this.cpfCnpj = cpfCnpj;
         this.diaVencimento = diaVencimento;
     }
-    public Clientes(String nomeEmpresa, String cpfCnpj, int diaVencimento, Date createdAt, Date updatedAt, Set leiturases) {
+    public Clientes(Medidores medidores, String nomeEmpresa, String cpfCnpj, int diaVencimento, Date createdAt, Date updatedAt, Set leiturases) {
+       this.medidores = medidores;
        this.nomeEmpresa = nomeEmpresa;
        this.cpfCnpj = cpfCnpj;
        this.diaVencimento = diaVencimento;
@@ -44,6 +47,13 @@ public class Clientes  implements java.io.Serializable {
     
     public void setId(Long id) {
         this.id = id;
+    }
+    public Medidores getMedidores() {
+        return this.medidores;
+    }
+    
+    public void setMedidores(Medidores medidores) {
+        this.medidores = medidores;
     }
     public String getNomeEmpresa() {
         return this.nomeEmpresa;

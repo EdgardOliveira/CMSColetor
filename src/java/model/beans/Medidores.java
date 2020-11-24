@@ -1,5 +1,5 @@
 package model.beans;
-// Generated 10/09/2020 16:10:26 by Hibernate Tools 4.3.1
+// Generated 23/11/2020 16:41:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -22,6 +22,7 @@ public class Medidores  implements java.io.Serializable {
      private String status;
      private Date createdAt;
      private Date updatedAt;
+     private Set clienteses = new HashSet(0);
      private Set leiturases = new HashSet(0);
      private Set enderecoses = new HashSet(0);
 
@@ -38,7 +39,7 @@ public class Medidores  implements java.io.Serializable {
         this.modalidade = modalidade;
         this.status = status;
     }
-    public Medidores(String numero, String grupo, String classe, String ligacao, String faturamento, String modalidade, String status, Date createdAt, Date updatedAt, Set leiturases, Set enderecoses) {
+    public Medidores(String numero, String grupo, String classe, String ligacao, String faturamento, String modalidade, String status, Date createdAt, Date updatedAt, Set clienteses, Set leiturases, Set enderecoses) {
        this.numero = numero;
        this.grupo = grupo;
        this.classe = classe;
@@ -48,6 +49,7 @@ public class Medidores  implements java.io.Serializable {
        this.status = status;
        this.createdAt = createdAt;
        this.updatedAt = updatedAt;
+       this.clienteses = clienteses;
        this.leiturases = leiturases;
        this.enderecoses = enderecoses;
     }
@@ -121,6 +123,13 @@ public class Medidores  implements java.io.Serializable {
     
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+    public Set getClienteses() {
+        return this.clienteses;
+    }
+    
+    public void setClienteses(Set clienteses) {
+        this.clienteses = clienteses;
     }
     public Set getLeiturases() {
         return this.leiturases;

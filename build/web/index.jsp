@@ -89,7 +89,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="leituras.jsp">
+                                <a href="clientes.jsp">
                                     <i class="fas fa-id-card-alt"></i>
                                     <p>Clientes</p>
                                 </a>
@@ -101,7 +101,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="leituras.jsp">
+                                <a href="cidades.jsp">
                                     <i class="fas fa-globe-americas"></i>
                                     <p>Cidades</p>
                                 </a>

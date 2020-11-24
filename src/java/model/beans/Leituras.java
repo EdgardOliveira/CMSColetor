@@ -1,5 +1,5 @@
 package model.beans;
-// Generated 10/09/2020 16:10:26 by Hibernate Tools 4.3.1
+// Generated 23/11/2020 16:41:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -76,7 +76,16 @@ public class Leituras  implements java.io.Serializable {
        this.updatedAt = updatedAt;
     }
     public Leituras(Clientes cliente, Medidores medidor, Date mesAno, long anterior, double constante, double residuo, double tarifaSemTributos, double tarifaComTributos, long media12Meses, Date dataAnterior) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.clientes = cliente;
+        this.medidores = medidor;
+        this.mesAno = mesAno;
+        this.anterior = anterior;
+        this.constante = constante;
+        this.residuo = residuo;
+        this.tarifaSemTributos = tarifaSemTributos;
+        this.tarifaComTributos = tarifaComTributos;
+        this.media12meses= media12Meses;
+        this.dataAnterior = dataAnterior;
     }
 
    

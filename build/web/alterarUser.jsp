@@ -4,6 +4,8 @@
     Author     : Thiago Lins
 --%>
 
+<%@page import="model.beans.Grupos"%>
+<%@page import="model.dao.GrupoDao"%>
 <%@page import="model.beans.Users"%>
 <%@page import="model.dao.UserDao"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" language="java" pageEncoding="UTF-8" import="java.sql.*" errorPage="" %>
@@ -49,6 +51,17 @@
                     <label for="txtPassword">Senha</label>
                     <input type="password" class="form-control" id="txtPassword" name="txtPassword"  maxlength="255" value="<%=user.getPassword()%>" required placeholder="Informe a senha do usuário">
                     <small id="emailHelp" class="form-text text-muted">*campo senha é obrigatório</small>
+                </div> 
+                <div class="form-group">
+                    <label for="selectGrupo">Grupo</label>
+                    <select class="form-control form-control" id="selectGrupo" name="selectGrupo" required>
+                        <%
+                            GrupoDao grupoDao = new GrupoDao();
+                            for (Grupos grupo : grupoDao.listar()) {
+                        %>
+                                <option value="<%=grupo.getId()%>" <%=user.getGrupos().getId() == grupo.getId() ? "selected" : ""%>><%=grupo.getDescricao()%></option>
+                        <%}%>
+                    </select>
                 </div>                
                 <br>
                 <div class="form-group">

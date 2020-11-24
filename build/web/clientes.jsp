@@ -4,6 +4,8 @@
     Author     : Edgard Oliveira
 --%>
 
+<%@page import="model.beans.Medidores"%>
+<%@page import="model.dao.MedidorDao"%>
 <%@page import="model.beans.Clientes"%>
 <%@page import="model.dao.ClienteDao"%>
 <%@page import="java.util.ArrayList"%>
@@ -187,6 +189,19 @@
                                                                         <option>15</option>
                                                                         <option>20</option>
                                                                         <option>25</option>                                                                
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <label for="selectMedidor">Medidor</label>
+                                                                    <select class="form-control form-control" id="selectMedidor" name="selectMedidor" required>
+                                                                        <%
+                                                                            MedidorDao medidorDao = new MedidorDao();
+                                                                            for (Medidores medidor : medidorDao.listar()) {
+                                                                        %>
+                                                                        <option value="<%=medidor.getId()%>"><%=medidor.getNumero()%></option>
+                                                                        <%}%>
                                                                     </select>
                                                                 </div>
                                                             </div>

@@ -4,6 +4,10 @@
     Author     : Edgard Oliveira
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.beans.Medidores"%>
+<%@page import="model.beans.Medidores"%>
+<%@page import="model.dao.MedidorDao"%>
 <%@page import="model.beans.Clientes"%>
 <%@page import="model.dao.ClienteDao"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" language="java" pageEncoding="UTF-8" import="java.sql.*" errorPage="" %>
@@ -54,6 +58,17 @@
                         <option <%=cliente.getDiaVencimento() == 15 ? "selected" : ""%>>15</option>
                         <option <%=cliente.getDiaVencimento() == 20 ? "selected" : ""%>>20</option>
                         <option <%=cliente.getDiaVencimento() == 25 ? "selected" : ""%>>25</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="selectMedidor">Medidor</label>
+                    <select class="form-control form-control" id="selectMedidor" name="selectMedidor" required>
+                        <%
+                            MedidorDao medidorDao = new MedidorDao();
+                            for (Medidores medidor : medidorDao.listar()) {
+                        %>
+                                <option value="<%=medidor.getId()%>" <%=cliente.getMedidores().getId() == medidor.getId() ? "selected" : ""%>><%=medidor.getNumero()%></option>
+                        <%}%>
                     </select>
                 </div>
                 <br>

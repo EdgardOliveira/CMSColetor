@@ -7,11 +7,14 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/coletor?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">coletor</property>
     <property name="hibernate.connection.password">coletor</property>
-    <mapping resource="model/beans/Users.hbm.xml"/>
+    <mapping resource="model/beans/Medidores.hbm.xml"/>
+    <mapping resource="model/beans/Cidades.hbm.xml"/>
+    <mapping resource="model/beans/Recursos.hbm.xml"/>
+    <mapping resource="model/beans/Grupos.hbm.xml"/>
     <mapping resource="model/beans/Clientes.hbm.xml"/>
     <mapping resource="model/beans/Enderecos.hbm.xml"/>
     <mapping resource="model/beans/Leituras.hbm.xml"/>
-    <mapping resource="model/beans/Medidores.hbm.xml"/>
-    <mapping resource="model/beans/Cidades.hbm.xml"/>
+    <mapping resource="model/beans/Users.hbm.xml"/>
+    <mapping resource="model/beans/Permissoes.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

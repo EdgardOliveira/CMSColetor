@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.beans.Clientes;
+import model.beans.Medidores;
 import model.dao.ClienteDao;
+import model.dao.MedidorDao;
 
 /**
  *
@@ -16,6 +18,7 @@ import model.dao.ClienteDao;
  */
 @WebServlet(name = "Cliente", urlPatterns = {"/ClienteController"})
 public class ClienteController extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
     private static String INSERIR_OU_EDITAR = "/cliente.jsp";
     private static String LISTAR = "/clientes.jsp";
@@ -47,18 +50,22 @@ public class ClienteController extends HttpServlet {
             default:
                 listarClientes(request, response);
         }
-        
+
         RequestDispatcher view = request.getRequestDispatcher(encaminhar);
         view.forward(request, response);
     }
 
     private void inserirCliente(HttpServletRequest request, HttpServletResponse response) {
-        
+
         String nomeEmpresa = request.getParameter("txtNomeEmpresa");
         String cpfCnpj = request.getParameter("txtCpfCnpj");
-        int diaVencimento  = Integer.parseInt(request.getParameter("selectDiaVencimento"));
+        int diaVencimento = Integer.parseInt(request.getParameter("selectDiaVencimento"));
+        long medidorId = Long.parseLong(request.getParameter("selectMedidor"));
 
-        Clientes cliente = new Clientes(nomeEmpresa, cpfCnpj, diaVencimento);
+        MedidorDao medidorDao = new MedidorDao();
+        Medidores medidor = medidorDao.consultarId(medidorId);
+
+        Clientes cliente = new Clientes(medidor, nomeEmpresa, cpfCnpj, diaVencimento);
 
         clienteDao.salvar(cliente);
 
@@ -66,30 +73,35 @@ public class ClienteController extends HttpServlet {
     }
 
     private void listarClientes(HttpServletRequest request, HttpServletResponse response) {
-        
+
         request.setAttribute("clientes", clienteDao.listar());
-        
+
         encaminhar = LISTAR;
     }
 
     private void atualizarCliente(HttpServletRequest request, HttpServletResponse response) {
-        
+
         long id = Long.parseLong(request.getParameter("txtId"));
         String nomeEmpresa = request.getParameter("txtNomeEmpresa");
         String cpfCnpj = request.getParameter("txtCpfCnpj");
         int diaVencimento = Integer.parseInt(request.getParameter("selectDiaVencimento"));
-        Clientes cliente = new Clientes(nomeEmpresa, cpfCnpj, diaVencimento);
+        long medidorId = Long.parseLong(request.getParameter("selectMedidor"));
+
+        MedidorDao medidorDao = new MedidorDao();
+        Medidores medidor = medidorDao.consultarId(medidorId);
+
+        Clientes cliente = new Clientes(medidor, nomeEmpresa, cpfCnpj, diaVencimento);
         cliente.setId(id);
-        
+
         clienteDao.alterar(cliente);
-        
+
         encaminhar = LISTAR;
 
         request.setAttribute("clientes", clienteDao.listar());
     }
 
     private void excluirCliente(HttpServletRequest request, HttpServletResponse response) {
-        
+
         long id = Long.parseLong(request.getParameter("id"));
 
         Clientes cliente = clienteDao.consultarId(id);

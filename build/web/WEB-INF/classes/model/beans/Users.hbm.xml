@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 10/09/2020 16:10:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 23/11/2020 16:41:25 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.beans.Users" table="users" catalog="coletor" optimistic-lock="version">
         <id name="id" type="java.lang.Long">
             <column name="id" />
             <generator class="identity" />
         </id>
+        <many-to-one name="grupos" class="model.beans.Grupos" fetch="select">
+            <column name="grupo_id" not-null="true" />
+        </many-to-one>
         <property name="name" type="string">
             <column name="name" not-null="true" />
         </property>
@@ -29,5 +32,11 @@
         <property name="updatedAt" type="timestamp">
             <column name="updated_at" length="19" />
         </property>
+        <set name="permissoeses" table="permissoes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="model.beans.Permissoes" />
+        </set>
     </class>
 </hibernate-mapping>

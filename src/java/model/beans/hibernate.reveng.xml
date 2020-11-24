@@ -2,10 +2,13 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="coletor"/>
-  <table-filter match-name="leituras"/>
-  <table-filter match-name="medidores"/>
-  <table-filter match-name="users"/>
+  <table-filter match-name="recursos"/>
+  <table-filter match-name="grupos"/>
   <table-filter match-name="cidades"/>
   <table-filter match-name="clientes"/>
   <table-filter match-name="enderecos"/>
+  <table-filter match-name="permissoes"/>
+  <table-filter match-name="users"/>
+  <table-filter match-name="leituras"/>
+  <table-filter match-name="medidores"/>
 </hibernate-reverse-engineering>

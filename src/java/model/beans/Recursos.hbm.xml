@@ -3,13 +3,13 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 23/11/2020 16:41:25 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.beans.Cidades" table="cidades" catalog="coletor" optimistic-lock="version">
+    <class name="model.beans.Recursos" table="recursos" catalog="coletor" optimistic-lock="version">
         <id name="id" type="java.lang.Long">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <property name="nome" type="string">
-            <column name="nome" length="40" not-null="true" />
+        <property name="descricao" type="string">
+            <column name="descricao" length="20" not-null="true" />
         </property>
         <property name="createdAt" type="timestamp">
             <column name="created_at" length="19" />
@@ -17,11 +17,11 @@
         <property name="updatedAt" type="timestamp">
             <column name="updated_at" length="19" />
         </property>
-        <set name="enderecoses" table="enderecos" inverse="true" lazy="true" fetch="select">
+        <set name="permissoeses" table="permissoes" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="cidade_id" not-null="true" />
+                <column name="recurso_id" not-null="true" />
             </key>
-            <one-to-many class="model.beans.Enderecos" />
+            <one-to-many class="model.beans.Permissoes" />
         </set>
     </class>
 </hibernate-mapping>
